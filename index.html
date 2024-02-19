@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table, th, td{
+            border: 2px solid purple;
+            border-collapse: collapse;
+            padding: 10px;
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+
+        th {
+            background-color: lightblue;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>9.1.1 Datos de usuario</h1>
+
+    <label>Dime tu nombre: <input type="text" id="dime-nombre"></label>
+    <label>Dime tu email: <input type="email" id="dime-email" checked></label>
+    <button onclick="datos()">Añadir</button>
+    <br>
+    <br>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Email</tr>
+        </tr>
+        <tr>
+            <td id="nombre"></td>
+            <td id="email"></td>
+        </tr>
+    </table>
+
+    <h1>9.1.2 Notas alumno</h1>
+    <label>Dime la nota: <input type="number" id="dnota"></label>
+    <p id="nota"></p>
+    <button onclick="notas()">Calificación</button>
+
+    <h1>9.1.3 Menor a 10</h1>
+    <p id="numero"></p>
+    <button onclick="pedirNum()">Pide números</button>
+    <script>
+        function datos() {
+            let dnombre=document.getElementById("dime-nombre").value;
+            let demail=document.getElementById("dime-email").value;
+
+            let nombre=document.getElementById("nombre");
+            nombre.innerHTML=(dnombre);
+
+            let email=document.getElementById("email");
+            email.innerHTML=(demail);
+        }
+
+        function notas () {
+            let dnota=document.getElementById("dnota").value;
+
+            let nota=document.getElementById("nota");
+            nota.innerHTML=(calificacion(dnota));
+        }
+
+        function calificacion(nota){
+            if (nota>=0 && nota <=3) {
+                return "Muy deficiente";
+            } else if (nota>3 && nota<=5){
+                return "Insuficiente";
+            } else if (nota>5 && nota<=6){
+                return "Suficiente";
+            } else if (nota>6 && nota<=7) {
+                return "Bien";
+            } else if (nota>7 && nota<=9){
+                return "Notable";
+            } else if (nota>9 && nota<=10){
+                return "Sobresaliente";
+            } else {
+                return "Nota no válida";
+            }
+        }
+
+        function pedirNum () {
+            let num1 = prompt("Dime el 1er num");
+            let num2 = prompt("Dime el 2do num");
+            let num3 = prompt("Dime el 3er num");
+
+            let numero=document.getElementById("numero");
+            numero.innerHTML=(numMenor(num1,num2,num3));
+        }
+
+        function numMenor (numero1, numero2, numero3) {
+            if (numero1<10 || numero2<10 || numero3<10){
+                return "Alguno de los números es menor a diez";
+            } else {
+                return "Todos los números son mayores a diez";
+            }
+        }
+    </script>
+</body>
+</html>
